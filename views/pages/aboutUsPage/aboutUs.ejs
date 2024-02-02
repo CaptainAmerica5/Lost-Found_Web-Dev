@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400;700&display=swap">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<style>
-.card {
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <style>
+    body {
+      background-image: url('./pages/aboutUsPage/hero-bg.jpg');
+      background-repeat: no-repeat;
+      background-size:cover;
+    }
+
+.fontss{
+  font-family: 'Playpen Sans', serif;
+}
+
+
+.profile-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0);
+  background-color: #fff; /* Add a background color without transparency */
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+    .profile-card:hover {
+      transform: scale(1.1);
+    }
+
+    .profile-card img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .profile-card h3 {
+      font-size: 24px;
+    }
+
+    .profile-card p {
+      font-size: 18px;
+    }
+	.card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
-  margin: auto;
+  margin: 10px;
   text-align: center;
   font-family: arial;
+  display: inline-block;
 }
 
 .title {
@@ -29,6 +73,9 @@ button {
   width: 100%;
   font-size: 18px;
 }
+button:hover, a:hover {
+      opacity: 0.7;
+    }
 
 a {
   text-decoration: none;
@@ -39,52 +86,121 @@ a {
 button:hover, a:hover {
   opacity: 0.7;
 }
-</style>
+  </style>
 </head>
 <body>
 
-<h2 style="text-align:center"><kbd>This Site is Created By: </kbd></h2>
+
+
 <div class="container">
-<div class="card col-lg-4">
-	<img src="./pages/aboutUsPage/Swati.jpg" alt="Swati" style="width:100%">
-	<h1>Swati Bhandari</h1>
-	<p class="title">M.Tech in CSIS</p>
-	<p>IIIT,Hyderabad</p>
-	<div style="margin: 24px 0;">
-		<a href="#"><i class="fa fa-dribbble"></i></a>
-		<a href="#"><i class="fa fa-twitter"></i></a>
-		<a href="#"><i class="fa fa-linkedin"></i></a>
-		<a href="#"><i class="fa fa-facebook"></i></a>
-	</div>
-	<p><button>Contact</button></p>
+  <h2 class="text-center my-4"><p class="fontss" style="font-size: 55px;">About Us</p></h2>
+  <div class="row">
+    <!-- Profile Card 1 -->
+    <div class="col-md-4">
+      <div class="profile-card">
+        <!-- <img src="./pages/aboutUsPage/Swati.jpg" alt="Swati" style="width:100%"> -->
+      <h1 class="anirudh">Anirudh <br>Derangula</h1>
+      <p class="title">B.Tech in Data Science</p>
+      <p>MIT, Manipal</p>
+      <div style="margin: 24px 0;">
+        
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        
+      </div>
+      <p>
+        <a href="https://www.linkedin.com/in/anirudh-derangula-324046203?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"> <!-- Replace 'https://www.example.com' with your desired website URL -->
+          <button>Contact</button>
+        </a>
+      </p>
+      </div>
+    </div>
+    
+    <!-- Profile Card 2 -->
+    <div class="col-md-4">
+      <div class="profile-card">
+        <!-- <img src="./pages/aboutUsPage/Swati.jpg" alt="Swati" style="width:100%"> -->
+      <h1>Shreyas <br>Allani</h1>
+      <p class="title">B.Tech in Data Science</p>
+      <p>MIT, Manipal</p>
+      <div style="margin: 24px 0;">
+        
+        
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        
+      </div>
+      <p><button>Contact</button></p>
+      </div>
+    </div>
+    
+    <!-- Profile Card 3 -->
+    <div class="col-md-4">
+      <div class="profile-card" >
+        <!-- <img src="./pages/aboutUsPage/Swati.jpg" alt="Swati" style="width:100%"> -->
+      <h1>Prashanth <br> Choudary</h1>
+      <p class="title">B.Tech in Data Science</p>
+      <p>MIT, Manipal</p>
+      <div style="margin: 24px 0;">
+        
+        
+        <a ><i class="fa fa-linkedin"></i></a>
+        
+      </div>
+      <p>
+        <a href="https://www.linkedin.com/in/anirudh-derangula-324046203?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"> <!-- Replace 'https://www.example.com' with your desired website URL -->
+          <button>Contact</button>
+        </a>
+      </p>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <!-- Profile Card 4 -->
+    <div class="col-md-4">
+      <div class="profile-card">
+        <!-- <img src="./pages/aboutUsPage/Swati.jpg" alt="Swati" style="width:100%"> -->
+      <h1>Santhosh <br>Darla</h1>
+      <p class="title">B.Tech in Data Science</p>
+      <p>MIT, Manipal</p>
+      <div style="margin: 24px 0;">
+        
+        
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        
+      </div>
+      <p><button>Contact</button></p>
+      </div>
+    </div>
+
+    <!-- Profile Card 5 -->
+    <div class="col-md-4">
+      <div class="profile-card">
+        <!-- <img src="./pages/aboutUsPage/Swati.jpg" alt="Swati" style="width:100%"> -->
+      <h1>A.P <br>Adharsh<br></h1>
+      <p class="title">B.Tech in Data Science</p>
+      <p>MIT, Manipal</p>
+      <div style="margin: 24px 0;">
+        
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        
+      </div>
+      <p><button>Contact</button></p>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="card col-lg-4">
-  <img src="./pages/aboutUsPage/Mitesh.jpg" alt="Mitesh" style="width:100%">
-  <h1>Mitesh Shah</h1>
-  <p class="title">M.Tech in CSE</p>
-  <p>IIIT,Hyderabad</p>
-  <div style="margin: 24px 0;">
-    <a href="#"><i class="fa fa-dribbble"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>
-    <a href="#"><i class="fa fa-facebook"></i></a>
- </div>
- <p><button>Contact</button></p>
-</div>
-<div class="card col-lg-4">
-  <img src="./pages/aboutUsPage/Rahil.jpg" alt="Rahil" style="width:100%">
-  <h1>Rahil Sheth</h1>
-  <p class="title">M.Tech in CSE</p>
-  <p>IIIT,Hyderabad</p>
-  <div style="margin: 24px 0;">
-    <a href="#"><i class="fa fa-dribbble"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>
-    <a href="#"><i class="fa fa-facebook"></i></a>
- </div>
- <p><button>Contact</button></p>
-</div>
-</div>
-<p class="bg-info">Click <a href="/" class="btn btn-default">here</a> to go back to the HomePage.</p>
+
+<script>
+  const profileCards = document.querySelectorAll('.profile-card');
+
+  profileCards.forEach((card) => {
+    card.addEventListener('mouseover', function() {
+      this.style.transform = 'scale(1.1)';
+    });
+
+    card.addEventListener('mouseout', function() {
+      this.style.transform = 'scale(1)';
+    });
+  });
+</script>
+
 </body>
 </html>

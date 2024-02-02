@@ -3,14 +3,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var multer	=	require('multer');
 var urlencodedParser = bodyParser.urlencoded({extended: false});
-var app = express();
+//ar app = express();
 var router = express.Router();
 var User = require('./models/user');
 var LostItem = require('./models/LostItem');
 var FoundItem = require('./models/FoundItem');
 var ClaimItem = require('./models/Claim');
 var ClaimFoundItem = require('./models/ClaimFound');
-var sessi;
+//var sessi;
 var storage = multer.diskStorage({
   destination: function(req,res,cb) {
     cb(null,'uploads/');
@@ -25,6 +25,11 @@ var upload = multer({
 // router.get('/',(req,res)=>{
 //   res.render('pages/test',{"sess" : req.session.email});
 // });
+
+// router.js
+
+
+
 router.get('/',(req,res)=> {
   // res.render('pages/index',{"sess" : req.session});
   res.render('pages/FrontPage/index',{"sess" : req.session});
@@ -76,11 +81,11 @@ router.post('/register',urlencodedParser,(req,res,next) => {
         passwordConf: req.body.cnfpwd,
       }
       var emailID=req.body.emailid;
-      var emailValid = /[a-z0-9]{1,}\@students\.iiit\.ac\.in/;
+      var emailValid = /[a-z0-9]{1,}\@learner\.manipal\.edu/;
       //console.log(emailValid.test(emailID));
       if(!emailValid.test(emailID))
       {
-        res.render("pages/loginerr",{"sess" : req.session.email,"err": "Invalid emailID:Should be of type @students.iiit.ac"});
+        res.render("pages/loginerr",{"sess" : req.session.email,"err": "Invalid emailID:Should be of type @learner.manipal.edu"});
         return ;
       }
       User.find({"email" : req.body.emailid}, function(err,user) {
@@ -233,6 +238,8 @@ router.post('/FoundItem',upload.single('FoundImg'),(req,res)=>{
 router.get('/project-detail',(req,res,next)=> {
   var id = req.query['mitesh'];
 //  console.log("mitesh ki id"+id);
+
+if (req.session.email) {
   LostItem.findById(id,(err, lostitem) => {
     if(err)
       return next(err);
@@ -241,16 +248,22 @@ router.get('/project-detail',(req,res,next)=> {
       res.render("pages/project-detail-page",{"lostitem" : lostitem , "sess" : req.session});
     }
   });
+} else {
+  // User is not logged in, redirect to the login page
+  res.render('pages/login',{"sess" : req.session});
+}
+
+  
 });
 
 
 router.get('/claimTable',(req,res)=>{
   var ItemId=req.query.Swati;
   var ItemName=req.query.Itemname;
-  console.log('baba dukkk dukk dukkkkkk');
+  
   ClaimItem.find({ItemId:ItemId},(err,Item)=>
 {
-  console.log('aabaaa jaabaa daabaaaaaaaaaaaaaa');
+  
   if(err)
     console.log(err);
     else {
@@ -335,14 +348,22 @@ router.get('/claimTable',(req,res)=>{
 router.get('/ClaimFound',(req,res,next)=> {
   var id = req.query['mitesh'];
   console.log("mitesh ki id"+id);
-  FoundItem.findById(id,(err,founditem) => {
-    if(err)
-      return next(err);
-    else {
-      console.log(founditem);
-      res.render("pages/ClaimFound",{"founditem" : founditem , "sess" : req.session});
-    }
-  });
+
+  if (req.session.email) {
+    FoundItem.findById(id,(err,founditem) => {
+      if(err)
+        return next(err);
+      else {
+        console.log(founditem);
+        res.render("pages/ClaimFound",{"founditem" : founditem , "sess" : req.session});
+      }
+    });
+  } else {
+    // User is not logged in, redirect to the login page
+    res.render('pages/login',{"sess" : req.session});
+  }
+
+  
 });
 
 

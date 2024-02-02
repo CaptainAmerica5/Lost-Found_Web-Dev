@@ -1,38 +1,59 @@
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost:27017/users');
-var db = mongoose.connection;
-var session = require('express-session');
-var routes = require('./imagefile');
-var MongoStore = require('connect-mongo')(session);
+const express = require('express');
+const session = require('express-session');
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo');
+const path = require('path');
+
+
+const bodyParser = require('body-parser');
+
+const app = express();
+const port = 5000;
+
+// Configure and connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/mydb', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   console.log('Database Connected!');
 });
 
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname));
-app.use(express.static(__dirname+'/views'));
-app.set('view engine','ejs');
-app.use(session({
-  secret:'swati rocks',
-  resave:true,
-  saveUnitialized: false,
-  store: new MongoStore({
-    mongooseConnection: db
+// Configure sessions
+app.use(
+  session({
+    secret: 'yourSecretKey', // Replace with your secret key
+    resave: true,
+    saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/mydb' }),
   })
-}));
+);
 
+// Middleware for parsing request bodies
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(express.static(__dirname+'/index.html'));
-var routes = require('./router');
-app.use('/',routes);
-var server = app.listen(5000, function () {
-  var host = server.address().address
-  var port = server.address().port
-  console.log("App Listening on Port 5000");
+
+// Serve static files
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/views'));
+app.use('/uploads', express.static(__dirname + '/uploads'));
+// Set the view engine to use EJS
+app.set('view engine', 'ejs');
+app.engine('ejs', require('ejs').renderFile);
+
+
+
+
+
+
+// Include your routes
+const routes = require('./router');
+app.use('/', routes);
+
+// Start the server
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
 });
